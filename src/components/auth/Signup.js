@@ -32,8 +32,6 @@ const Signup = ({ switchForm }) => {
 
     }
 
-    console.log(signupObject)
-
     return (
         <div className='auth-form'>
             <h1>Signup</h1>
