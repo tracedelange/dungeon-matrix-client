@@ -1,5 +1,14 @@
 import { baseURL } from "./globals";
 
+export const submitSignup = async (signupObject) => {
+    const method = "POST"
+    const headers = { "Content-Type": "application/json" }
+    const body = signupObject
+    const response = await fetch(`${baseURL}/signup`, { method: method, headers: headers, body: JSON.stringify(body) })
+    const data = await response.json()
+    return data
+}
+
 export const submitLogin = async (loginObject) => {
     const method = "POST"
     const headers = { "Content-Type": "application/json" }
