@@ -11,13 +11,20 @@ const NavBar = () => {
 
     const handleLogoutClick = () => {
         localStorage.setItem('jwt', null)
-        dispatch({type: 'LOGOUT'})
+        dispatch({ type: 'LOGOUT' })
     }
 
     return (
-        <div>
-            <h1>Welcome, {userData.username}</h1>
-            <Button variant='contained' onClick={handleLogoutClick}>LOGOUT</Button>
+        <div className='header-container'>
+            <div className='header-third'>
+            </div>
+            <div className='header-third'>
+                <p>Dungeon Matrix</p>
+            </div>
+            <div className='header-third'>
+                <p>Welcome, {userData.username}</p>
+                <Button variant='contained' onClick={handleLogoutClick}>LOGOUT</Button>
+            </div>
         </div>
     )
 }
