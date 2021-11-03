@@ -8,25 +8,26 @@ const SelectionOptions = () => {
 
     const history = useHistory()
 
-    const handleHomepageOptionClick = () => {
+    const handleHomepageOptionClick = (e) => {
         console.log(e.target.id)
+        history.push(`/${e.target.id}`)
     }
 
 
     return (
         <div className='homepage-options-container'>
             <Paper sx={paperTransitionStyle} elevation={4} className='homepage-paper-option' onClick={handleHomepageOptionClick} id='campaigns'>
-                <h3>My Campaigns</h3>
+                <h3 onClick={handleHomepageOptionClick} id='campaigns'>My Campaigns</h3>
             </Paper>
             <Paper sx={paperTransitionStyle} elevation={4} className='homepage-paper-option' onClick={handleHomepageOptionClick} id='characters'>
-                <h3>My Characters</h3>
+                <h3 onClick={handleHomepageOptionClick} id='characters'>My Characters</h3>
             </Paper>
             <Paper className='break'></Paper>
             <Paper sx={paperTransitionStyle} elevation={4} className='homepage-paper-option' onClick={handleHomepageOptionClick} id='maps'>
-                <h3>My Maps</h3>
+                <h3 onClick={handleHomepageOptionClick} id='maps'>My Maps</h3>
             </Paper>
             <Paper sx={paperTransitionStyle} elevation={4} className='homepage-paper-option' onClick={handleHomepageOptionClick} id='account'>
-                <h3>My Account</h3>
+                <h3 onClick={handleHomepageOptionClick} id='account'>My Account</h3>
             </Paper>
         </div>
     )

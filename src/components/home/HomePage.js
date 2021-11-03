@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
-import Campaigns from './Campaigns'
+import Campaigns from '../campaigns/Campaigns'
 import { Switch, Route } from 'react-router-dom'
 import SelectionOptions from './SelectionOptions'
 import CharacterPageHome from '../characters/CharacterPageHome'

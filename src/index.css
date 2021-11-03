@@ -77,3 +77,8 @@ html, body {
 .homepage-paper-option p{
   margin: 0%;
 }
+
+.header-third p {
+  cursor: pointer;
+  font-size: 3vh;
+}
