@@ -17,12 +17,12 @@ const NavBar = () => {
     return (
         <div className='header-container'>
             <div className='header-third'>
-            </div>
-            <div className='header-third'>
                 <p>Dungeon Matrix</p>
             </div>
             <div className='header-third'>
                 <p>Welcome, {userData.username}</p>
+            </div>
+            <div className='header-third'>
                 <Button variant='contained' onClick={handleLogoutClick}>LOGOUT</Button>
             </div>
         </div>

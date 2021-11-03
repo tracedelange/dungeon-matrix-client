@@ -6,20 +6,25 @@ import CampaignsList from './CampaignsList'
 const Campaigns = () => {
 
     const dispatch = useDispatch()
+    const [campaignsLoaded, setCampaignsLoaded] = useState(false)
     const campaigns = useSelector(state => state.campaigns)
 
     useEffect(() => {
         getCampaigns()
             .then(data => {
                 dispatch({ type: "SET_CAMPAIGNS", payload: data })
+                setCampaignsLoaded(true)
             })
     }, [])
 
-    
 
     return (
         <>
-            <CampaignsList />
+            {campaignsLoaded ?
+                <CampaignsList />
+                :
+                null
+            }
         </>
     )
 }
