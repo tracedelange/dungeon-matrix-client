@@ -9,7 +9,7 @@ const NavBar = () => {
     const dispatch = useDispatch()
     const userData = useSelector(state => state.session)
     const history = useHistory()
-
+    const campaignDetails = useSelector(state => state.campaigns.selectedCampaign)
 
     const handleLogoutClick = () => {
         localStorage.setItem('jwt', null)
@@ -17,6 +17,9 @@ const NavBar = () => {
     }   
 
     const handleRedirect = (e) => {
+        if (e.target.id === ''){
+            dispatch({type:"RESET_CAMPAIGN"})
+        }
         history.push(`/${e.target.id}`)
     }
 
@@ -27,7 +30,11 @@ const NavBar = () => {
                 <p id='' onClick={handleRedirect}>Dungeon Matrix</p>
             </div>
             <div className='header-third'>
+                {campaignDetails ? 
+                <p>{campaignDetails.title}</p>
+                :
                 <p id='account' onClick={handleRedirect}>Welcome, {userData.username}</p>
+                }
             </div>
             <div className='header-third'>
                 <Button variant='contained' onClick={handleLogoutClick}>LOGOUT</Button>

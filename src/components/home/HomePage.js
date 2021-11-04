@@ -5,6 +5,11 @@ import { Switch, Route } from 'react-router-dom'
 import SelectionOptions from './SelectionOptions'
 import CharacterPageHome from '../characters/CharacterPageHome'
 import AccountPage from './AccountPage'
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
+import CampaignSession from '../campaigns/CampaignSession'
+
+TimeAgo.addDefaultLocale(en)
 
 const HomePage = () => {
 
@@ -15,6 +20,9 @@ const HomePage = () => {
             <Switch>
                 <Route exact path='/campaigns'>
                     <Campaigns />
+                </Route>
+                <Route exact path='/campaigns/:id'>
+                    <CampaignSession />
                 </Route>
                 <Route exact path='/characters'>
                     <CharacterPageHome />

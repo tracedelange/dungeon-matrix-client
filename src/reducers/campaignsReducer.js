@@ -1,11 +1,30 @@
 
-const initialState = []
+const initialState = {
+    campaignList: [],
+    selectedCampaign: null,
+    campaignLogs: []
+}
 
 const sessionsReducer = (state=initialState, action) => {
 
     switch(action.type) {
+        case "SET_SELECTED_CAMPAIGN":
+            return {
+                ...state,
+                selectedCampaign: {...action.payload}
+            }
         case "SET_CAMPAIGNS":
-            return [...action.payload];
+            return {
+                ...state,
+                campaignList: [...action.payload]
+            }
+        case 'SET_MESSAGES':
+            return {
+                ...state,
+                campaignLogs: [...action.payload]
+            }
+        case 'RESET_CAMPAIGN':
+            return initialState
         default:
             return state;
     }
