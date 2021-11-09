@@ -159,11 +159,18 @@ html, body {
   border-top: 0px;
   border-bottom: 0px;
 
+
+
   height: 89vh;
   flex-grow: 2;
   display: flex;
   flex-direction: column;
   background-color: white;
+}
+
+.chat-container-container {
+  position: absolute;
+  z-index: 10;
 }
 .new-chat-item {
 
@@ -196,15 +203,27 @@ html, body {
 }
 .closed{
   visibility: hidden;
+  z-index: -10;
 }
 
 .chat-control-icon-open{
   position: absolute;
   left: 30vw;
   cursor: pointer;
+  z-index: 10;
 }
 
 .chat-control-icon-closed{
   position: absolute;
   cursor: pointer;
+  z-index: 10;
+
+}
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #586A6A;
+
+  /* background-color: #586A6A; */
 }

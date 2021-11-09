@@ -6,7 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ChatContainer = ({ socket }) => {
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -23,17 +23,19 @@ const ChatContainer = ({ socket }) => {
 
     return (
 
-        <>
-            {open ?
+        open ?
+            <div className='chat-container-container'>
                 <ArrowBackIcon className='chat-control-icon-open' onClick={() => setOpen(!open)} />
-                :
-                <ArrowForwardIcon className='chat-control-icon-closed' onClick={() => setOpen(!open)} />
-            }
-            <div className='chat-container' className={open ? 'chat-container' : 'chat-container closed'}>
-                <ChatLogs />
-                <NewChatItem submitMessage={submitMessage} />
+                <div className='chat-container' className={open ? 'chat-container' : 'chat-container closed'}>
+                    <ChatLogs />
+                    <NewChatItem submitMessage={submitMessage} />
+                </div>
             </div>
-        </>
+            :
+
+            <ArrowForwardIcon className='chat-control-icon-closed' onClick={() => setOpen(!open)} />
+
+
     )
 }
 

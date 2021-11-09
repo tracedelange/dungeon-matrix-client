@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import ChatContainer from '../campaignConsole/chat/ChatContainer'
 import Cable from 'actioncable'
 import { websocket } from '../../../globals'
+import MainStage from './canvas/MainStage'
 
 const SocketLayer = () => {
 
@@ -68,8 +69,9 @@ const SocketLayer = () => {
     }, [connected])
 
     return (
-        <div>
+        <div className='session-container'>
             <ChatContainer socket={socket} />
+            <MainStage socket={socket} />
         </div>
     )
 }
