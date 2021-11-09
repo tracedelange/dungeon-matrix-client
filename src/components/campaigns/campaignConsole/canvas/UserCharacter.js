@@ -3,13 +3,15 @@ import { Image } from 'react-konva'
 import Eater from '../../../../assets/eater-200.png'
 import useImage from 'use-image'
 
-const UserCharacter = ({ config }) => {
+const UserCharacter = ({ config, data, socket, map_character_id }) => {
 
     const [image] = useImage(Eater);
 
+
+
     const [position, setPosition] = useState({
-        x: 10,
-        y: 10
+        x: data.position_x,
+        y: data.position_y
     })
 
 
@@ -38,9 +40,16 @@ const UserCharacter = ({ config }) => {
         })
 
         //handle redux state update and send out message containing user movement.
-        console.log("new position: ")
-        console.log(x)
-        console.log(y)
+        // console.log("new position: ")
+        // console.log(x)
+        // console.log(y)
+        let newPosition = {
+            map_character_id: map_character_id,
+            position_x: x,
+            position_y: y
+        }
+        socket.updateUserPosition(newPosition)
+
 
     }
 
