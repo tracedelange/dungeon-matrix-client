@@ -36,3 +36,12 @@ export const getCampaigns = async () => {
     const data = await response.json()
     return data
 }
+
+export const getCampaignData = async (campaignID) => {
+    let token = localStorage.getItem('jwt')
+    const method = "GET"
+    const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+    const response = await fetch(`${baseURL}/campaigns/${campaignID}`, { method: method, headers: headers })
+    const data = await response.json()
+    return data
+}

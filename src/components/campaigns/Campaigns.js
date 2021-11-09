@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCampaigns } from '../../requests'
 import CampaignsList from './CampaignsList'
+import CampaignSession from './CampaignSession'
 
 const Campaigns = () => {
 
     const dispatch = useDispatch()
     const [campaignsLoaded, setCampaignsLoaded] = useState(false)
-    const campaigns = useSelector(state => state.campaigns)
+
 
     useEffect(() => {
         getCampaigns()
@@ -20,10 +21,11 @@ const Campaigns = () => {
 
     return (
         <>
-            {campaignsLoaded ?
-                <CampaignsList />
-                :
-                null
+            {
+                campaignsLoaded ?
+                    <CampaignsList />
+                    :
+                    null
             }
         </>
     )

@@ -30,7 +30,7 @@ html, body {
   height: 10vh;
   font-size: 1vw;
 
-  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid #586A6A;
 
   display: flex;
   flex-direction: row;
@@ -76,4 +76,154 @@ html, body {
 
 .homepage-paper-option p{
   margin: 0%;
+}
+
+.header-third p {
+  cursor: pointer;
+  font-size: 3vh;
+}
+
+.campaign-selection-list {
+  
+  width: 60vw;
+  margin-left: 20vw;
+  margin-top: 0vh;
+  list-style: none;
+  overflow-y: scroll;
+  height: 70vh;
+
+  row-gap: 10px;
+
+}
+
+.campaign-selection-list::-webkit-scrollbar {
+  display: none;
+}
+
+.campaign-list-item { 
+
+  margin-bottom: 8vh;
+  width: 90%;
+  height: 15vh;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 1%/10%;
+  transition: all .4s ease-in-out;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+
+}
+
+.campaign-list-item:hover {
+  color: white;
+  background-color: #ef5350;
+  cursor: pointer;
+}
+
+.campaign-title {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0%;
+  padding: 0%;
+  justify-content: center;
+}
+.campaign-title p {
+  margin: 1%;
+}
+
+.campaign-title p:first-child {
+  font-size: 3vmin;
+}
+
+.campaign-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.campaign-details p {
+  margin: 2%;
+}
+.options-header {
+  width: 100%;
+  text-align: center;
+  /* margin: 1%; */
+}
+
+.chat-container {
+  width: 30vw;
+  border: 1px solid #586A6A;
+  border-top: 0px;
+  border-bottom: 0px;
+
+
+
+  height: 89vh;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.chat-container-container {
+  position: absolute;
+  z-index: 10;
+}
+.new-chat-item {
+
+  display: flex;
+  flex-direction: row;
+  padding: 1%;
+}
+.chat-logs {
+  height: 100%;
+  list-style: none;
+  overflow-y: scroll;
+  padding-left: 3%;
+}
+.chat-logs::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-log-item p {
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+  color: black;
+}
+.chat-log-item {
+ cursor: default; 
+}
+
+.owned-chat-item p {
+  font-weight: 600;
+}
+.closed{
+  visibility: hidden;
+  z-index: -10;
+}
+
+.chat-control-icon-open{
+  position: absolute;
+  left: 30vw;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.chat-control-icon-closed{
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+
+}
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #586A6A;
+
+  /* background-color: #586A6A; */
 }

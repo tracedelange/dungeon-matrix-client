@@ -4,13 +4,17 @@ import CampaignListItem from './CampaignListItem'
 
 const CampaignsList = () => {
 
-    const campaigns = useSelector(state => state.campaigns)
+    const campaigns = useSelector(state => state.campaigns.campaignList)
     const campaignArray = campaigns.map(item => <CampaignListItem data={item} key={item.id} />)
 
+
     return (
-        <ul className='campaign-selection-list'>
-            {campaignArray}
-        </ul>
+        <>
+            <h2 className='options-header'>Your Campaigns</h2>
+            <ul className='campaign-selection-list'>
+                {campaignArray}
+            </ul>
+        </>
     )
 }
 
