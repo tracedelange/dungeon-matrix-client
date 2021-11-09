@@ -41,7 +41,6 @@ const SocketLayer = () => {
             },
             received: async (data) => {
                 const resp = await JSON.parse(data);
-                console.log(resp.type)
                 switch(resp.type){
                     case "new_message":
                         dispatch({type: 'SET_MESSAGES', payload: resp.chat_messages})

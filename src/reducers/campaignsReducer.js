@@ -13,6 +13,11 @@ const sessionsReducer = (state=initialState, action) => {
                 ...state,
                 selectedCampaign: {...action.payload}
             }
+        case "ADD_NEW_CAMPAIGN":
+            return {
+                ...state,
+                campaignList: [action.payload, ...state.campaignList]
+            }
         case "SET_CAMPAIGNS":
             return {
                 ...state,

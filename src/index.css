@@ -117,15 +117,17 @@ html, body {
 }
 
 .campaign-list-item:hover {
-  color: white;
-  background-color: #ef5350;
-  cursor: pointer;
+  /* color: white; */
+  /* background-color: #ef5350; */
+  /* font-weight: 900; */
+  /* cursor: pointer; */
 }
 
 .campaign-title {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 0%;
   padding: 0%;
   justify-content: center;
@@ -142,6 +144,7 @@ html, body {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 .campaign-details p {
@@ -228,3 +231,10 @@ html, body {
   /* background-color: #586A6A; */
 }
 
+.campaigns-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1%;
+}

@@ -45,3 +45,14 @@ export const getCampaignData = async (campaignID) => {
     const data = await response.json()
     return data
 }
+
+
+
+export const createCampaign = async (campaignTitle) => {
+    let token = localStorage.getItem('jwt')
+    const method = "POST"
+    const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+    const response = await fetch(`${baseURL}/campaigns?title=${campaignTitle}`, { method: method, headers: headers })
+    const data = await response.json()
+    return data
+}

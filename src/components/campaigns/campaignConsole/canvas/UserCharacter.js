@@ -2,17 +2,20 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Image } from 'react-konva'
 import Eater from '../../../../assets/eater-200.png'
 import useImage from 'use-image'
+import HoverText from './HoverText'
 
 const UserCharacter = ({ config, data, socket, map_character_id }) => {
 
     const [image] = useImage(Eater);
 
 
-
     const [position, setPosition] = useState({
         x: data.position_x,
         y: data.position_y
     })
+
+    const [hoverActive, setHoverActive] = useState(false)
+
 
 
     const handleDragDrop = (e) => {
@@ -53,29 +56,26 @@ const UserCharacter = ({ config, data, socket, map_character_id }) => {
 
     }
 
-
-
-
-
-
-
-
-
-
     return (
+        <>
+        {hoverActive ?
+        <HoverText x={50 * position.x} y={50 * (position.y - 1)} content={data.character.name} />
+        :
+        null}
         <Image
             image={image}
             height={config.scale}
             width={config.scale}
 
             onMouseEnter={e => {
-                // style stage container:
                 const container = e.target.getStage().container();
                 container.style.cursor = "pointer";
+                setHoverActive(true)
             }}
             onMouseLeave={e => {
                 const container = e.target.getStage().container();
                 container.style.cursor = "default";
+                setHoverActive(false)
             }}
 
             x={50 * position.x}
@@ -85,6 +85,7 @@ const UserCharacter = ({ config, data, socket, map_character_id }) => {
             onDragEnd={handleDragDrop}
             _useStrictMode
         />
+        </>
     )
 }
 
