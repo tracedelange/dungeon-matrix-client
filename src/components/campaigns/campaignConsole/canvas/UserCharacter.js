@@ -1,46 +1,80 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Image } from 'react-konva'
 import Eater from '../../../../assets/eater-200.png'
 import useImage from 'use-image'
 
-const UserCharacter = ({ scale }) => {
-
-    const shapeRef = useRef()
+const UserCharacter = ({ config }) => {
 
     const [image] = useImage(Eater);
 
-    const [active, setActive] = useState(false)
     const [position, setPosition] = useState({
-        x: 0,
-        y: 0
+        x: 10,
+        y: 10
     })
 
 
-    
+    const handleDragDrop = (e) => {
+
+        let x = Math.floor((e.target.x()) / 50)
+        let y = Math.floor((e.target.y()) / 50)
+
+        if (x <= 0) {
+            x = 0
+        }
+        if (y <= 0) {
+            y = 0
+        }
+        if (x > config.width - 1) {
+            x = config.width - 1
+        } 
+        if (y > config.height - 1) {
+            y = config.height - 1
+        }
+
+
+        setPosition({
+            x: x,
+            y: y
+        })
+
+        //handle redux state update and send out message containing user movement.
+        console.log("new position: ")
+        console.log(x)
+        console.log(y)
+
+    }
 
 
 
-    const [characterStats, setCharacterState] = useState({
-        speed: 10
-    })
 
 
 
 
-    console.log(active)
+
 
 
     return (
         <Image
             image={image}
-            height={scale / 2}
-            width={scale / 2}
+            height={config.scale}
+            width={config.scale}
+
+            onMouseEnter={e => {
+                // style stage container:
+                const container = e.target.getStage().container();
+                container.style.cursor = "pointer";
+            }}
+            onMouseLeave={e => {
+                const container = e.target.getStage().container();
+                container.style.cursor = "default";
+            }}
 
             x={50 * position.x}
             y={50 * position.y}
 
-            onClick={()=>setActive(true)}
-
+            draggable
+            onDragEnd={handleDragDrop}
+            _useStrictMode
         />
     )
 }

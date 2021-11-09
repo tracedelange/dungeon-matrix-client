@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Grid from './Grid';
 import { Stage, Layer, Rect, Circle, Line } from 'react-konva';
 import UserCharacter from './UserCharacter'
+import { useSelector } from 'react-redux';
 
 
 const MainStage = ({ socket }) => {
@@ -11,6 +12,10 @@ const MainStage = ({ socket }) => {
         x: 50,
         y: 50
     })
+
+    const map = useSelector(state => state.grid)
+
+
 
     const cellSize = 100
 
@@ -47,12 +52,13 @@ const MainStage = ({ socket }) => {
         x={stage.x}
         y={stage.y}
 
+
         >
             <Layer>
-                <Grid scale={cellSize / 2}  />
+                <Grid config={map.configuration} />
             </Layer>
             <Layer>
-                <UserCharacter scale={cellSize}/>
+                <UserCharacter config={map.configuration}/>
             </Layer>
         </Stage>
     )
