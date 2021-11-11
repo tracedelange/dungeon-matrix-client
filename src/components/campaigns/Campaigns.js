@@ -4,20 +4,22 @@ import { getCampaigns } from '../../requests'
 import CampaignsList from './CampaignsList'
 import CampaignSession from './CampaignSession'
 
+
 const Campaigns = () => {
 
     const dispatch = useDispatch()
     const [campaignsLoaded, setCampaignsLoaded] = useState(false)
 
-
     useEffect(() => {
         getCampaigns()
             .then(data => {
+                console.log(data)
                 dispatch({ type: "SET_CAMPAIGNS", payload: data })
                 setCampaignsLoaded(true)
             })
     }, [])
 
+    
 
     return (
         <>

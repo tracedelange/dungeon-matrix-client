@@ -16,6 +16,8 @@ const SocketLayer = () => {
     const [socket, setSocket] = useState({})
     const [connected, setConnected] = useState(false)
 
+
+
     useEffect(()=>{
 
         console.log('selected campaign has been changed')
@@ -34,19 +36,26 @@ const SocketLayer = () => {
             user_id: userData.id
         }, {
             connected: () => {
-                // console.log(`connected to channel ${campaignData.id}`)
-                // chatsConnection.perform('newUserConnected')
+                console.log(`connected to channel ${campaignData.id}`)
+                chatsConnection.perform('getSessionData')
             },
             received: async (data) => {
                 const resp = await JSON.parse(data);
                 switch(resp.type){
                     case "new_message":
                         dispatch({type: 'SET_MESSAGES', payload: resp.chat_messages})
+                        break;
+                    case "map_data":
+                        dispatch({type: 'SET_MAP_CHARACTERS', payload: resp.map_data.map_characters})
+                        break;
                     default:
-                        return
+                        return;
                 }
 
                 // dispatch(addMessage(resp))
+            },
+            updateUserPosition: (position) => {
+                chatsConnection.perform('updateUserPosition', position)
             },
             disconnected: () => {
                 // chatsConnection.perform('userHasLeft')

@@ -8,6 +8,7 @@ import AccountPage from './AccountPage'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import CampaignSession from '../campaigns/CampaignSession'
+import CampaignDetailsPage from '../campaigns/CampaignDetailsPage'
 
 TimeAgo.addDefaultLocale(en)
 
@@ -23,6 +24,9 @@ const HomePage = () => {
                 </Route>
                 <Route exact path='/campaigns/:id'>
                     <CampaignSession />
+                </Route>
+                <Route exact path='/campaigns/config/:id'>
+                    <CampaignDetailsPage />
                 </Route>
                 <Route exact path='/characters'>
                     <CharacterPageHome />

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Line, Rect } from 'react-konva'
+import { useSelector } from 'react-redux'
 
 
 
-const Grid = ({ scale }) => {
+const Grid = ({ config }) => {
 
-    let columns = scale
-    let rows = scale / 2
+    let columns = config.width
+    let rows = config.height
 
-    
-    let height = scale * 25
-    let width = scale * 50
+    let height = config.scale * config.height
+    let width = config.scale * config.width
 
     let verticalLines = []
     let horizontalLines = []

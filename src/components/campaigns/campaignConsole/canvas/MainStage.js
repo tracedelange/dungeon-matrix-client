@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import Grid from './Grid';
 import { Stage, Layer, Rect, Circle, Line } from 'react-konva';
 import UserCharacter from './UserCharacter'
-
+import { useSelector } from 'react-redux';
+import MapCharacter from './MapCharacter';
 
 const MainStage = ({ socket }) => {
 
@@ -12,7 +13,10 @@ const MainStage = ({ socket }) => {
         y: 50
     })
 
-    const cellSize = 100
+    const map = useSelector(state => state.grid)
+    const user = useSelector (state => state.session)
+
+
 
     const handleWheel = (e) => {
         e.evt.preventDefault();
@@ -34,6 +38,15 @@ const MainStage = ({ socket }) => {
         });
       };
 
+      const mapCharacterArray = map.map_characters.map(item => {
+
+          if (user.id !== item.user_id) {
+            return <MapCharacter data={item} key={item.id} config={map.configuration} />
+          } else {
+              return <UserCharacter key={item.id} map_character_id={item.id} data={item} socket={socket} config={map.configuration}/>
+          }
+
+      })
 
 
     return (
@@ -46,13 +59,12 @@ const MainStage = ({ socket }) => {
         draggable
         x={stage.x}
         y={stage.y}
-
         >
             <Layer>
-                <Grid scale={cellSize / 2}  />
+                <Grid config={map.configuration} />
             </Layer>
             <Layer>
-                <UserCharacter scale={cellSize}/>
+                {mapCharacterArray}
             </Layer>
         </Stage>
     )
