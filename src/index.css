@@ -104,9 +104,9 @@ html, body {
 
   margin-bottom: 8vh;
   width: 90%;
-  height: 15vh;
+  height: 25vh;
   border: 2px solid rgba(0, 0, 0, 0.25);
-  border-radius: 1%/10%;
+  border-radius: 1%/5%;
   transition: all .4s ease-in-out;
 
   display: flex;
@@ -237,4 +237,74 @@ html, body {
   align-items: center;
   justify-content: center;
   margin-bottom: 1%;
+}
+
+.campaign-details {
+  width: 100%;
+}
+
+.campaign-details h2 {
+  text-align: center;
+}
+
+.campaign-details-container {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 70%;
+  
+  height: 70vh;
+  border-radius: 1% / 2%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+  
+}
+
+.campaign-details-sub {
+  width: 30%;
+  flex-grow: 2;
+  
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.campaign-details-sub h3 {
+  text-align: center;
+  
+}
+
+.campaign-members-list {
+
+  height: 45vh;
+  width: 25vw;
+  border-radius: 1% / 2%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  list-style: none;
+  text-align: center;
+
+  padding: 0;
+
+  overflow-y: scroll;
+  
+  
+}
+.campaign-members-list::-webkit-scrollbar {
+  display: none;
+}
+
+.campaign-add-user-container {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.campaignUsersArrayItem {
+  font-size: 200%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

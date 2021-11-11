@@ -3,21 +3,23 @@ import { getAge } from '../../globals'
 import { Divider, Button } from '@mui/material'
 import { useHistory } from 'react-router-dom'
 import { getCampaignData } from '../../requests'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const CampaignListItem = ({ data }) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    
+
     let dm = data.users.find(item => item.id === data.dm_id)
+    let user = useSelector(state => state.session)
 
     const handleCampaignItemClick = () => {
         history.push(`/campaigns/${data.id}`)
     }
     const handleCampaignDetailsClick = () => {
         history.push(`/campaigns/config/${data.id}`)
-    } 
+    }
+
 
     return (
         <li className='campaign-list-item'>
@@ -39,7 +41,11 @@ const CampaignListItem = ({ data }) => {
                 <p>
                     Dungeon Master:  {dm.username}
                 </p>
-                <Button variant='contained' onClick={handleCampaignDetailsClick}>Manage Campaign</Button>
+                {data.is_dm ?
+                    <Button variant='contained' onClick={handleCampaignDetailsClick}>Manage Campaign</Button>
+                    :
+                    null
+                }
 
             </div>
         </li>
