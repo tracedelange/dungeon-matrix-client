@@ -74,3 +74,28 @@ export const removeUserFromCampaign = async (user_id, campaignId) => {
     const response = await fetch(`${baseURL}/campaign_users?user_id=${user_id}&campaign_id=${campaignId}`, { method: method, headers: headers })
     return response
 }
+
+export const getCharacters = async () => {
+    let token = localStorage.getItem('jwt')
+    const method = "GET"
+    const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+    const response = await fetch(`${baseURL}/characters`, { method: method, headers: headers })
+    const data = await response.json()
+    return data
+}
+export const createCharacter = async (character) => {
+    let token = localStorage.getItem('jwt')
+    const method = "POST"
+    const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+    const response = await fetch(`${baseURL}/characters?name=${character}`, { method: method, headers: headers })
+    const data = await response.json()
+    return data
+}
+export const deleteCharacter = async (characterID) => {
+    let token = localStorage.getItem('jwt')
+    const method = "DELETE"
+    const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
+    const response = await fetch(`${baseURL}/characters/${characterID}`, { method: method, headers: headers })
+    return response
+}
+

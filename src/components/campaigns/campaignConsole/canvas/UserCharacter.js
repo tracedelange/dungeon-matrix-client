@@ -3,10 +3,11 @@ import { Image } from 'react-konva'
 import Eater from '../../../../assets/eater-200.png'
 import useImage from 'use-image'
 import HoverText from './HoverText'
+import ranger from '../../../../assets/ranger.png'
 
 const UserCharacter = ({ config, data, socket, map_character_id }) => {
 
-    const [image] = useImage(Eater);
+    const [image] = useImage(ranger);
 
 
     const [position, setPosition] = useState({
