@@ -8,7 +8,7 @@ const TerrainLayer = ({ stage, config }) => {
     // console.log(stage)
     // console.log(config)
 
-    const [grassImage] = useImage(grasses[9])
+    const [grassImage] = useImage(grasses[0])
 
     const grassArray = []
 

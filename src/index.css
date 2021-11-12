@@ -570,14 +570,32 @@ html, body {
 .canvas-element-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.dm-toolbox-container img {
+  cursor: pointer;
 }
 
 .dm-toolbox-image {
-  width: 128px;
+  width: 100px;
+  border: 1px solid white;
+  padding: 1%;
 }
 
 .dm-toolbox-image-terrain {
   /* width: auto; */
-  width: 64;
+  width: 84px;
+  height: auto;
+
+
+}
+
+.dm-toolbox-image-selected {
+
+  border: 1px solid red;
+  border-radius: 5%;
 
 }

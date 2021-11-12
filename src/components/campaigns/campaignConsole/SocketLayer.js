@@ -49,7 +49,8 @@ const SocketLayer = () => {
                         dispatch({type: 'SET_MESSAGES', payload: resp.chat_messages})
                         break;
                     case "map_data":
-                        dispatch({type: 'SET_MAP_CHARACTERS', payload: resp.map_data.map_characters})
+                        console.log(resp.map_data)
+                        dispatch({type: 'SET_MAP_ELEMENTS', payload: resp.map_data})
                         break;
                     default:
                         return;
@@ -62,6 +63,9 @@ const SocketLayer = () => {
             },
             updateUserPosition: (position) => {
                 chatsConnection.perform('updateUserPosition', position)
+            },
+            spawnElement: (elementObject) => {
+                chatsConnection.perform('spawnElement', elementObject)
             },
             updateCharacterHealth: (newHealth) => {
                 chatsConnection.perform('updateCharacterHealth', newHealth)

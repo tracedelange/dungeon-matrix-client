@@ -5,6 +5,7 @@ import UserCharacter from './UserCharacter'
 import { useSelector } from 'react-redux';
 import MapCharacter from './MapCharacter';
 import TerrainLayer from './TerrainLayer';
+import MapElement from './MapElement';
 
 
 const MainStage = ({ socket }) => {
@@ -41,6 +42,12 @@ const MainStage = ({ socket }) => {
         });
     };
 
+    const mapElementArray = map.map_elements.map(item => {
+        return <MapElement config={map.configuration} data={item} key={item.id} />
+    })
+
+
+
     const mapCharacterArray = map.map_characters.map(item => {
 
         if (user.id !== item.user_id) {
@@ -52,16 +59,46 @@ const MainStage = ({ socket }) => {
     })
 
 
-    const handleClick = (e) => {
-        console.log(e)
-        console.log(e.evt.layerX)
-        console.log(e.evt.layerY)
+    const handleStageClick = (e) => {
+
+
+        
+        if (map.dmTools.active){
+            //spawn characte at clicked location.
+            let x = Math.floor((e.target.x()) / 50)
+            let y = Math.floor((e.target.y()) / 50)
+    
+            if (x <= 0) {
+                x = 0
+            }
+            if (y <= 0) {
+                y = 0
+            }
+            if (x > map.configuration.width - 1) {
+                x = map.configuration.width - 1
+            }
+            if (y > map.configuration.height - 1) {
+                y = map.configuration.height - 1
+            }
+    
+
+            let elementObject = {avatar_index: map.dmTools.selectedItem, position_x: x, position_y: y}
+
+            console.log(elementObject)
+
+            socket.spawnElement(elementObject)
+
+        }
+    }
+    const handleMouseOver = () => {
+        // console.log(e)
     }
 
     return (
         <Stage
             onWheel={handleWheel}
-            onClick={handleClick}
+            onClick={handleStageClick}
+            onMouseOver={handleMouseOver}
             width={window.innerWidth}
             height={window.innerHeight - 99}
             scaleX={stage.scale}
@@ -72,6 +109,9 @@ const MainStage = ({ socket }) => {
         >
             <Layer>
                 <TerrainLayer stage={stage} config={map.configuration} />
+            </Layer>
+            <Layer>
+                {mapElementArray}
             </Layer>
             <Layer>
                 {map.configuration.gridVisible ?

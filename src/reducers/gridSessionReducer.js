@@ -6,16 +6,22 @@ const initialState = {
         gridVisible: false,
         characterDetails: true
     },
-    map_characters:[]
+    dmTools: {
+        active: false,
+        selectedItem: null
+    },
+    map_characters:[],
+    map_elements:[]
 }
 
 const gridSessionReducer = (state=initialState, action) => {
 
     switch(action.type) {
-        case "SET_MAP_CHARACTERS":
+        case "SET_MAP_ELEMENTS":
             return {
                 ...state,
-                map_characters: [...action.payload]
+                map_characters: [...action.payload.map_characters],
+                map_elements: [...action.payload.map_elements]
             }
         case "UPDATE_CONFIGURATION":
             return {
@@ -23,6 +29,22 @@ const gridSessionReducer = (state=initialState, action) => {
                 configuration: {
                     ...state.configuration,
                     ...action.payload
+                }
+            }
+        case 'SET_DM_TOOLS_ACTIVE':
+            return {
+                ...state,
+                dmTools: {
+                    ...state.dmTools,
+                    active: action.payload
+                }
+            }
+        case 'SET_SELECTED_ITEM':
+            return {
+                ...state,
+                dmTools: {
+                    ...state.dmTools,
+                    selectedItem: action.payload
                 }
             }
 
