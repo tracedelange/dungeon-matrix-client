@@ -20,7 +20,8 @@ const CampaignSession = () => {
                     dispatch({ type: 'SET_SELECTED_CAMPAIGN', payload: data })
                 }
             })
-    }, [])
+    }, []) 
+
 
     return (
         <>
