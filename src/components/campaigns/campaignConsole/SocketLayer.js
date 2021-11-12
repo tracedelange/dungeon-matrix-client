@@ -8,6 +8,7 @@ import { websocket } from '../../../globals'
 import MainStage from './canvas/MainStage'
 import CharacterContainer from './characters/CharacterContainer'
 import DisplayOptions from './options/DisplayOptions'
+import DMConsole from './dmTools/DMConsole'
 
 const SocketLayer = () => {
 
@@ -85,12 +86,17 @@ const SocketLayer = () => {
         }
     }, [connected])
 
+    console.log(userData)
+    console.log(campaignData)
+
     return (
         <div className='session-container'>
             <ChatContainer socket={socket} />
+            {campaignData.is_dm ? <DMConsole socket={socket}/> :null}
             <MainStage socket={socket} />
             <DisplayOptions socket={socket} />
             <CharacterContainer socket={socket} />
+
         </div>
     )
 }

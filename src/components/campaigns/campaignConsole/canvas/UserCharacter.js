@@ -62,7 +62,7 @@ const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }
 
         //quickly iterate through existing positions for each user and determine if new location is occupied or not
 
-        console.log(mapCharacters)
+        // console.log(mapCharacters)
         let conflict = mapCharacters.find(item => item.position_x === newPosition.position_x && item.position_y === newPosition.position_y)
 
         if (conflict) {
@@ -85,7 +85,11 @@ const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }
             {hoverActive ?
                 <HoverText x={(50 * position.x)} y={50 * (position.y - 1)} content={data.character.name} />
                 :
-                null}
+                config.characterDetails ?
+                <HoverText x={(50 * position.x)} y={50 * (position.y - 1)} content={data.character.name} />
+                :
+                null
+                }
             <Image
                 image={image}
                 height={config.scale}

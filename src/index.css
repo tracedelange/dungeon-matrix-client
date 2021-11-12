@@ -523,3 +523,61 @@ html, body {
   top: 21vh;
   cursor: pointer;
 }
+
+.display-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.dm-toolbox-open {
+
+  position: absolute;
+  z-index: 10;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  left: 50%;
+  bottom: 1%;
+  border-radius: 15%;
+  
+}
+
+.dm-toolbox-close {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  background-color: red;
+  color: white;
+  left: 50%;
+  bottom: 20%;
+  border-radius: 15%;
+}
+
+.dm-toolbox-container {
+  background-color: white;
+  position: absolute;
+  z-index: 10;
+  height: 20%;
+  bottom: 0%;
+  right: 21%;
+  width: 58%;
+
+  border-radius: 1% / 5%;
+}
+
+.canvas-element-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.dm-toolbox-image {
+  width: 128px;
+}
+
+.dm-toolbox-image-terrain {
+  /* width: auto; */
+  width: 64;
+
+}

@@ -1,8 +1,10 @@
 const initialState = {
     configuration: {
-        width: 50,
+        width: 25,
         height: 25,
-        scale: 50
+        scale: 50,
+        gridVisible: false,
+        characterDetails: true
     },
     map_characters:[]
 }
@@ -15,7 +17,15 @@ const gridSessionReducer = (state=initialState, action) => {
                 ...state,
                 map_characters: [...action.payload]
             }
-            
+        case "UPDATE_CONFIGURATION":
+            return {
+                ...state,
+                configuration: {
+                    ...state.configuration,
+                    ...action.payload
+                }
+            }
+
         case "SET_GRID":
             return {
                 ...state

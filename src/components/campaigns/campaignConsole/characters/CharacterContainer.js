@@ -13,8 +13,8 @@ const CharacterContainer = ({ socket }) => {
     const campaignDetails = useSelector(state => state.campaigns.selectedCampaign)
     const [open, setOpen] = useState(false)
 
-    console.log(user)
-    console.log(campaignDetails)
+    // console.log(user)
+    // console.log(campaignDetails)
 
     const handleClick = (e) => {
         setOpen(!open)

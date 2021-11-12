@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { Image } from 'react-konva'
-import Hunter from '../../../../assets/hunter-200.png'
 import useImage from 'use-image'
 import HoverText from './HoverText'
 import { useSelector } from 'react-redux'
 import { Sprite } from 'react-konva'
-import warrior from '../../../../assets/warrior-spritesheet.png'
 import { avatars } from '../../../../avatarIndex'
 
 const MapCharacter = ({ config, data }) => {
@@ -18,6 +16,9 @@ const MapCharacter = ({ config, data }) => {
         <>
             {hoverActive ?
 
+                <HoverText x={50 * data.position_x} y={50 * (data.position_y-1)} content={data.character.name} />
+                :
+                config.characterDetails ?
                 <HoverText x={50 * data.position_x} y={50 * (data.position_y-1)} content={data.character.name} />
                 :
                 null
