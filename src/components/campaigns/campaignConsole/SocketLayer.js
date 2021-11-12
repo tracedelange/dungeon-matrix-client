@@ -6,6 +6,7 @@ import ChatContainer from '../campaignConsole/chat/ChatContainer'
 import Cable from 'actioncable'
 import { websocket } from '../../../globals'
 import MainStage from './canvas/MainStage'
+import CharacterContainer from './characters/CharacterContainer'
 
 const SocketLayer = () => {
 
@@ -54,6 +55,9 @@ const SocketLayer = () => {
 
                 // dispatch(addMessage(resp))
             },
+            spawnCharacter: (spawnObject) => {
+                chatsConnection.perform('spawnUser', spawnObject)
+            },
             updateUserPosition: (position) => {
                 chatsConnection.perform('updateUserPosition', position)
             },
@@ -81,6 +85,7 @@ const SocketLayer = () => {
         <div className='session-container'>
             <ChatContainer socket={socket} />
             <MainStage socket={socket} />
+            <CharacterContainer socket={socket} />
         </div>
     )
 }

@@ -308,3 +308,130 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
+.character-container {
+  width: 25vw;
+  border: 1px solid #586A6A;
+  border-top: 0px;
+  border-radius: 1%;
+  /* border-bottom: 0px; */
+
+  min-height: 40vh;
+  max-height: fit-content;
+  
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character-container-container {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+.canvas-character-display-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  row-gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.canvas-character-entry {
+  font-size: 100%;
+  width: 90%;
+  height: 6vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+  /*  border-radius: 2% / 10%; */
+
+}
+
+.character-details-container {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 70%;
+  
+  
+
+  height: 70vh;
+  border-radius: 1% / 2%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3%;
+
+  padding-top: 1%;
+  
+  overflow-y: scroll;
+}
+
+.character-details-container::-webkit-scrollbar {
+  display: none;
+}
+
+.character-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.character-details h2 {
+  text-align: center;
+}
+
+
+.character-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 2%;
+  align-items: center;
+  height: 10%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  width: 80%;
+  border-radius: 1% /10%;
+
+
+  font-size: 150%;
+}
+
+
+.character-list-item-delete {
+  cursor: pointer;
+}
+
+.no-characters-container {
+  text-align: center;
+}
+
+.character-spawn-selection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.character-spawn-selection-item {
+padding: 2%;
+}
+
+.character-spawn-selection-item:hover {
+
+  opacity: 0.75;
+  cursor: pointer;
+
+}
+
+
