@@ -1,5 +1,7 @@
 html, body {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: 'BedsteadRegular';
+  /* font-weight: normal; */
+  font-style: normal;
   margin: 0%;
   padding: 0%;
 }
@@ -29,15 +31,13 @@ html, body {
   width: 100vw;
   height: 10vh;
   font-size: 1vw;
-
   border-bottom: 2px solid #586A6A;
-
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-.header-third{
+.header-third {
   text-align: center;
   width: 30vw;
   display: flex;
@@ -51,7 +51,6 @@ html, body {
   height: 60vh;
   margin-top: 10vh;
   /* background-color: beige; */
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -74,7 +73,7 @@ html, body {
   cursor: pointer;
 }
 
-.homepage-paper-option p{
+.homepage-paper-option p {
   margin: 0%;
 }
 
@@ -84,36 +83,30 @@ html, body {
 }
 
 .campaign-selection-list {
-  
   width: 60vw;
   margin-left: 20vw;
   margin-top: 0vh;
   list-style: none;
   overflow-y: scroll;
   height: 70vh;
-
   row-gap: 10px;
-
 }
 
 .campaign-selection-list::-webkit-scrollbar {
   display: none;
 }
 
-.campaign-list-item { 
-
+.campaign-list-item {
   margin-bottom: 8vh;
   width: 90%;
   height: 25vh;
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 1%/5%;
   transition: all .4s ease-in-out;
-
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: center;
-
 }
 
 .campaign-list-item:hover {
@@ -132,6 +125,7 @@ html, body {
   padding: 0%;
   justify-content: center;
 }
+
 .campaign-title p {
   margin: 1%;
 }
@@ -147,9 +141,11 @@ html, body {
   align-items: center;
   justify-content: center;
 }
+
 .campaign-details p {
   margin: 2%;
 }
+
 .options-header {
   width: 100%;
   text-align: center;
@@ -157,13 +153,11 @@ html, body {
 }
 
 .chat-container {
-  width: 30vw;
+  width: 20vw;
+  padding-right: 3%;
   border: 1px solid #586A6A;
   border-top: 0px;
   border-bottom: 0px;
-
-
-
   height: 89vh;
   flex-grow: 2;
   display: flex;
@@ -175,18 +169,20 @@ html, body {
   position: absolute;
   z-index: 10;
 }
-.new-chat-item {
 
+.new-chat-item {
   display: flex;
   flex-direction: row;
   padding: 1%;
 }
+
 .chat-logs {
   height: 100%;
   list-style: none;
   overflow-y: scroll;
   padding-left: 3%;
 }
+
 .chat-logs::-webkit-scrollbar {
   display: none;
 }
@@ -197,38 +193,41 @@ html, body {
   font-size: 14px;
   color: black;
 }
+
 .chat-log-item {
- cursor: default; 
+  cursor: default;
 }
 
 .owned-chat-item p {
   font-weight: 600;
+  font-style: italic;
 }
-.closed{
+
+.closed {
   visibility: hidden;
   z-index: -10;
 }
 
-.chat-control-icon-open{
+.chat-control-icon-open {
   position: absolute;
-  left: 30vw;
+  left: 20.5vw;
   cursor: pointer;
   z-index: 10;
 }
 
-.chat-control-icon-closed{
+.chat-control-icon-closed {
   position: absolute;
   cursor: pointer;
   z-index: 10;
-
 }
 
 .session-container {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #586A6A;
-
-  /* background-color: #586A6A; */
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .campaigns-header {
@@ -250,20 +249,16 @@ html, body {
 .campaign-details-container {
   border: 1px solid rgba(0, 0, 0, 0.5);
   width: 70%;
-  
   height: 70vh;
   border-radius: 1% / 2%;
-
   display: flex;
   flex-direction: row;
   justify-content: space-evenly
-  
 }
 
 .campaign-details-sub {
   width: 30%;
   flex-grow: 2;
-  
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -272,25 +267,19 @@ html, body {
 
 .campaign-details-sub h3 {
   text-align: center;
-  
 }
 
 .campaign-members-list {
-
   height: 45vh;
   width: 25vw;
   border-radius: 1% / 2%;
   border: 1px solid rgba(0, 0, 0, 0.5);
-
   list-style: none;
   text-align: center;
-
   padding: 0;
-
   overflow-y: scroll;
-  
-  
 }
+
 .campaign-members-list::-webkit-scrollbar {
   display: none;
 }
@@ -298,7 +287,6 @@ html, body {
 .campaign-add-user-container {
   display: flex;
   flex-direction: row;
-
 }
 
 .campaignUsersArrayItem {
@@ -310,26 +298,24 @@ html, body {
 }
 
 .character-container {
-  width: 25vw;
+  width: 30vw;
   border: 1px solid #586A6A;
   border-top: 0px;
-  border-radius: 1%;
+  border-radius: 2% / 3%;
   /* border-bottom: 0px; */
-
   min-height: 40vh;
   max-height: fit-content;
-  
   flex-grow: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
 }
 
 .character-container-container {
   position: absolute;
   right: 0;
   z-index: 10;
-  background-color: white;
 }
 
 .canvas-character-display-container {
@@ -349,29 +335,23 @@ html, body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-
-  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+  justify-content: flex-start;
+  /* column-gap: 5%; */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding-left: 3%;
   /*  border-radius: 2% / 10%; */
-
 }
 
 .character-details-container {
   border: 1px solid rgba(0, 0, 0, 0.5);
   width: 70%;
-  
-  
-
   height: 70vh;
   border-radius: 1% / 2%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 3%;
-
   padding-top: 1%;
-  
   overflow-y: scroll;
 }
 
@@ -385,10 +365,10 @@ html, body {
   flex-direction: column;
   align-items: center;
 }
+
 .character-details h2 {
   text-align: center;
 }
-
 
 .character-list-item {
   display: flex;
@@ -400,11 +380,8 @@ html, body {
   border: 1px solid rgba(0, 0, 0, 0.25);
   width: 80%;
   border-radius: 1% /10%;
-
-
   font-size: 150%;
 }
-
 
 .character-list-item-delete {
   cursor: pointer;
@@ -420,18 +397,129 @@ html, body {
   justify-content: center;
   align-items: center;
   width: 100%;
-
 }
 
 .character-spawn-selection-item {
-padding: 2%;
+  padding: 2%;
 }
 
 .character-spawn-selection-item:hover {
-
   opacity: 0.75;
   cursor: pointer;
+}
 
+.character-list-avatar-image {
+  width: 5%;
+}
+
+.avatar-selection-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-evenly;
+  padding: 0%;
+  width: 100%;
+}
+
+.avatar-selection-list-item {
+  cursor: pointer;
+  width: 64px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 10%;
+}
+
+.chosen-avatar {
+  border: 1px solid red;
+  border-radius: 10%;
+}
+
+.character-hide-icon {
+  position: absolute;
+  z-index: 10;
+  right: 30vw;
+  cursor: pointer;
+}
+
+.character-open-icon {
+  position: absolute;
+  z-index: 10;
+  right: 1px;
+  cursor: pointer;
 }
 
 
+.sidebar-avatar {
+  width: 10%;
+}
+
+.health-bar-container {
+  margin-right: 6%;
+  min-width: 40%;
+  max-width: 40%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+  /* background-color: red; */
+}
+
+.health-reds {
+  width: 10%;
+  height: 100%;
+  background-color: red;
+}
+
+.health-greens {
+  min-width: 10%;
+  height: 100%;
+  background-color: green;
+}
+
+.grower {
+  flex-grow: 3;
+}
+
+.health-bar-container-stats {
+  padding-right: 2%;
+  padding-left: 2%;
+
+}
+
+.health-management-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  cursor: pointer;
+}
+
+.health-management-container svg {
+
+  font-size: 100%;
+
+}
+
+.display-options-container {
+  width: 30vw;
+  height: 5vw;
+  background-color: white;
+  position: absolute;
+  left: 35vw;
+  z-index: 10;
+  /* border: 1px solid rgba(0, 0, 0, 0.25); */
+  border-radius: 2% / 10%;
+}
+
+.open-options {
+  position: absolute;
+  right: 50%;
+  cursor: pointer;
+}
+
+.close-options {
+  position: absolute;
+  right: 50%;
+  top: 21vh;
+  cursor: pointer;
+}

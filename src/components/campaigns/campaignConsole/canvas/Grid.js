@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Line, Rect } from 'react-konva'
+import { Image, Line, Rect } from 'react-konva'
 import { useSelector } from 'react-redux'
-
-
 
 const Grid = ({ config }) => {
 
@@ -14,6 +12,8 @@ const Grid = ({ config }) => {
 
     let verticalLines = []
     let horizontalLines = []
+
+
 
     for (let x = -1; x < rows; x++) {
         verticalLines.push(
@@ -43,7 +43,6 @@ const Grid = ({ config }) => {
 
     return (
         <>
-        <Rect x={0} y={0} width={width} height={height} fill="white" />
         {verticalLines}
         {horizontalLines}
         </>

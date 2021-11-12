@@ -4,6 +4,7 @@ import { getCharacters, createCharacter, deleteCharacter } from '../../requests'
 import CharacterListItem from './CharacterListItem'
 import NewCharacterDialog from './NewCharacterDialog'
 
+
 const CharacterPageHome = () => {
 
 

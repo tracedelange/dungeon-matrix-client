@@ -1,16 +1,28 @@
 import React from 'react'
-import { Text } from 'react-konva'
+import { Text, Rect } from 'react-konva'
 
-const HoverText = ({x, y, content}) => {
+const HoverText = ({ x, y, content }) => {
+
+
     return (
-        <Text
-            x={x}
-            y={y}
-            text={content}
-            fontSize={50}
-            fontFamily='Calibri'
-            fill='blue'
-        />
+        <>
+            {/* <Rect
+                x={x -75}
+                y={y}
+                width={200}
+                height={50}
+                fill="grey"
+            /> */}
+            <Text
+                x={x - (content.length * 5)}
+                y={y}
+                text={content}
+                fontSize={30}
+                fontFamily='BedsteadRegular'
+                fill='white'
+            />
+        </>
+
     )
 }
 

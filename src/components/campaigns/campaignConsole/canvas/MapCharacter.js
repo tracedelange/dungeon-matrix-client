@@ -6,10 +6,11 @@ import HoverText from './HoverText'
 import { useSelector } from 'react-redux'
 import { Sprite } from 'react-konva'
 import warrior from '../../../../assets/warrior-spritesheet.png'
+import { avatars } from '../../../../avatarIndex'
 
 const MapCharacter = ({ config, data }) => {
 
-    const [image] = useImage(warrior)
+    const [image] = useImage(avatars[data.character.avatar_index])
     const [hoverActive, setHoverActive] = useState(false)
 
 

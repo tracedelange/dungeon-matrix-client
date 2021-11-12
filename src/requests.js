@@ -87,7 +87,7 @@ export const createCharacter = async (character) => {
     let token = localStorage.getItem('jwt')
     const method = "POST"
     const headers = { "Content-Type": "application/json", "Authorization": `Bearer ${token}` }
-    const response = await fetch(`${baseURL}/characters?name=${character}`, { method: method, headers: headers })
+    const response = await fetch(`${baseURL}/characters?name=${character.name}&avatar_index=${character.avatar_index}&health=${character.health}`, { method: method, headers: headers })
     const data = await response.json()
     return data
 }

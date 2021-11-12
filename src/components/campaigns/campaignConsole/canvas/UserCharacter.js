@@ -1,13 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Image } from 'react-konva'
-import Eater from '../../../../assets/eater-200.png'
+import { useSelector } from 'react-redux'
 import useImage from 'use-image'
 import HoverText from './HoverText'
-import ranger from '../../../../assets/ranger.png'
 
-const UserCharacter = ({ config, data, socket, map_character_id }) => {
+import { avatars } from '../../../../avatarIndex'
 
-    const [image] = useImage(ranger);
+const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }) => {
+
+
+
+    const [image] = useImage(avatars[data.character.avatar_index]);
 
 
     const [position, setPosition] = useState({
@@ -21,6 +24,10 @@ const UserCharacter = ({ config, data, socket, map_character_id }) => {
 
     const handleDragDrop = (e) => {
 
+        // console.log(e.target._lastPos)
+        let lastX = position.x
+        let lastY = position.y
+
         let x = Math.floor((e.target.x()) / 50)
         let y = Math.floor((e.target.y()) / 50)
 
@@ -32,7 +39,7 @@ const UserCharacter = ({ config, data, socket, map_character_id }) => {
         }
         if (x > config.width - 1) {
             x = config.width - 1
-        } 
+        }
         if (y > config.height - 1) {
             y = config.height - 1
         }
@@ -52,40 +59,56 @@ const UserCharacter = ({ config, data, socket, map_character_id }) => {
             position_x: x,
             position_y: y
         }
-        socket.updateUserPosition(newPosition)
+
+        //quickly iterate through existing positions for each user and determine if new location is occupied or not
+
+        console.log(mapCharacters)
+        let conflict = mapCharacters.find(item => item.position_x === newPosition.position_x && item.position_y === newPosition.position_y)
+
+        if (conflict) {
+            setPosition({
+                x: lastX,
+                y: lastY
+            })
+        } else {
+            socket.updateUserPosition(newPosition)
+        }
+
+        setHoverActive(true)
+
 
 
     }
 
     return (
         <>
-        {hoverActive ?
-        <HoverText x={50 * position.x} y={50 * (position.y - 1)} content={data.character.name} />
-        :
-        null}
-        <Image
-            image={image}
-            height={config.scale}
-            width={config.scale}
+            {hoverActive ?
+                <HoverText x={(50 * position.x)} y={50 * (position.y - 1)} content={data.character.name} />
+                :
+                null}
+            <Image
+                image={image}
+                height={config.scale}
+                width={config.scale}
+                onDragStart={()=> setHoverActive(false)}
+                onMouseEnter={e => {
+                    const container = e.target.getStage().container();
+                    container.style.cursor = "pointer";
+                    setHoverActive(true)
+                }}
+                onMouseLeave={e => {
+                    const container = e.target.getStage().container();
+                    container.style.cursor = "default";
+                    setHoverActive(false)
+                }}
 
-            onMouseEnter={e => {
-                const container = e.target.getStage().container();
-                container.style.cursor = "pointer";
-                setHoverActive(true)
-            }}
-            onMouseLeave={e => {
-                const container = e.target.getStage().container();
-                container.style.cursor = "default";
-                setHoverActive(false)
-            }}
+                x={50 * position.x}
+                y={50 * position.y}
 
-            x={50 * position.x}
-            y={50 * position.y}
-
-            draggable
-            onDragEnd={handleDragDrop}
-            _useStrictMode
-        />
+                draggable
+                onDragEnd={handleDragDrop}
+                _useStrictMode
+            />
         </>
     )
 }

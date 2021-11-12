@@ -7,6 +7,7 @@ import Cable from 'actioncable'
 import { websocket } from '../../../globals'
 import MainStage from './canvas/MainStage'
 import CharacterContainer from './characters/CharacterContainer'
+import DisplayOptions from './options/DisplayOptions'
 
 const SocketLayer = () => {
 
@@ -61,6 +62,9 @@ const SocketLayer = () => {
             updateUserPosition: (position) => {
                 chatsConnection.perform('updateUserPosition', position)
             },
+            updateCharacterHealth: (newHealth) => {
+                chatsConnection.perform('updateCharacterHealth', newHealth)
+            },
             disconnected: () => {
                 // chatsConnection.perform('userHasLeft')
             },
@@ -85,6 +89,7 @@ const SocketLayer = () => {
         <div className='session-container'>
             <ChatContainer socket={socket} />
             <MainStage socket={socket} />
+            <DisplayOptions socket={socket} />
             <CharacterContainer socket={socket} />
         </div>
     )

@@ -8,6 +8,12 @@ export const themeObject = (
                 main: '#ffb74d',
             },
         },
+        typography: {
+            fontFamily: [
+                'BedsteadRegular',
+                'Roboto'
+            ].join(',')
+        }
     }
 
 )

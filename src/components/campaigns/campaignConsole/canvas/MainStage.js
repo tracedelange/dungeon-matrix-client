@@ -4,11 +4,12 @@ import { Stage, Layer, Rect, Circle, Line } from 'react-konva';
 import UserCharacter from './UserCharacter'
 import { useSelector } from 'react-redux';
 import MapCharacter from './MapCharacter';
+import TerrainLayer from './TerrainLayer';
 
 const MainStage = ({ socket }) => {
 
     const [stage, setStage] = useState({
-        scale: .5,
+        scale: 1,
         x: 50,
         y: 50
     })
@@ -43,7 +44,7 @@ const MainStage = ({ socket }) => {
           if (user.id !== item.user_id) {
             return <MapCharacter data={item} key={item.id} config={map.configuration} />
           } else {
-              return <UserCharacter key={item.id} map_character_id={item.id} data={item} socket={socket} config={map.configuration}/>
+              return <UserCharacter mapCharacters={map.map_characters} key={item.id} map_character_id={item.id} data={item} socket={socket} config={map.configuration}/>
           }
 
       })
@@ -61,7 +62,10 @@ const MainStage = ({ socket }) => {
         y={stage.y}
         >
             <Layer>
-                <Grid config={map.configuration} />
+                <TerrainLayer stage={stage} config={map.configuration} />
+            </Layer>
+            <Layer>
+                {/* <Grid config={map.configuration} /> */}
             </Layer>
             <Layer>
                 {mapCharacterArray}
