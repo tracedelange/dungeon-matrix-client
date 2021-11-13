@@ -60,9 +60,6 @@ const MainStage = ({ socket }) => {
 
 
     const handleStageClick = (e) => {
-
-
-        
         if (map.dmTools.active){
             //spawn characte at clicked location.
             let x = Math.floor((e.target.x()) / 50)

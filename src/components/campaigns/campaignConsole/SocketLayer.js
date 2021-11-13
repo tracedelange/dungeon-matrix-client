@@ -19,7 +19,7 @@ const SocketLayer = () => {
     const [socket, setSocket] = useState({})
     const [connected, setConnected] = useState(false)
 
-
+    const gridConfiguration = useSelector(state => state.grid.configuration)
 
     useEffect(()=>{
 
@@ -36,7 +36,8 @@ const SocketLayer = () => {
         const chatsConnection = cable.subscriptions.create({
             channel: 'ChatChannel',
             id: campaignData.id,
-            user_id: userData.id
+            user_id: userData.id,
+            gridConfiguration: gridConfiguration
         }, {
             connected: () => {
                 console.log(`connected to channel ${campaignData.id}`)
@@ -63,6 +64,12 @@ const SocketLayer = () => {
             },
             updateUserPosition: (position) => {
                 chatsConnection.perform('updateUserPosition', position)
+            },
+            generateMap: (request) => {
+                chatsConnection.perform('generateMap', request)
+            },
+            clearMap: () => {
+                chatsConnection.perform('clearMap')
             },
             spawnElement: (elementObject) => {
                 chatsConnection.perform('spawnElement', elementObject)

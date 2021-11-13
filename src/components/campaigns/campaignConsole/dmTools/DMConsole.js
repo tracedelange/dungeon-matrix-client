@@ -4,9 +4,10 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { mobs, terrain } from '../../../../avatarIndex'
 import { v4 as uuid } from 'uuid'
 import {useSelector, useDispatch} from 'react-redux'
+import { Button } from '@mui/material';
 
 
-const DMConsole = () => {
+const DMConsole = ({socket}) => {
 
     const [open, setOpen] = useState(false)
 
@@ -32,6 +33,16 @@ const DMConsole = () => {
                 <>
                     <ArrowDownwardIcon onClick={() => setOpen(!open)} className='dm-toolbox-close' />
                     <div className='dm-toolbox-container'>
+
+                        <div className='scene-generator-container'>
+                            <Button disabled='true'>Desert</Button>
+                            <Button disabled='true'>Cave</Button>
+                            <Button disabled='true'>Grove</Button>
+                            <div className='break'></div>
+                            <Button disabled='true'>Mountain</Button>
+                            <Button id='field' onClick={(e) => socket.generateMap({type:e.target.id})}>Field</Button>
+                            <Button onClick={() => socket.clearMap()}>Clear</Button>
+                        </div>
 
                         <div className='canvas-element-container'>
                             {mobs.map((item, index) => {
