@@ -19,7 +19,7 @@ const SocketLayer = () => {
     const [socket, setSocket] = useState({})
     const [connected, setConnected] = useState(false)
 
-    const gridConfiguration = useSelector(state => state.grid.configuration)
+    // const gridConfiguration = useSelector(state => state.grid.configuration)
 
     useEffect(()=>{
 
@@ -37,7 +37,7 @@ const SocketLayer = () => {
             channel: 'ChatChannel',
             id: campaignData.id,
             user_id: userData.id,
-            gridConfiguration: gridConfiguration
+            // gridConfiguration: gridConfiguration
         }, {
             connected: () => {
                 console.log(`connected to channel ${campaignData.id}`)

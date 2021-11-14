@@ -1,25 +1,20 @@
 import React from 'react'
 import { Image } from 'react-konva'
 import useImage from 'use-image'
-import background from '../../../../assets/background.png'
+import { backgrounds } from '../../../../avatarIndex'
 
-
-const BackgroundImage = ({stageScale}) => {
+const BackgroundImage = ({config}) => {
     
-    const [image] = useImage(background)
 
-    console.log(stageScale)
+    const [image] = useImage(backgrounds[config.background_index])
 
     return (
         <Image
-        // image={image}
-        // width={window.innerWidth / stageScale.scale}
-        // height={window.innerHeight / stageScale.scale}
-        // x={-(stageScale.x) * 3.3}
-        // y={-(stageScale.y* 3.3)}
-        // offsetX={0}
-        // offsetY={0}
-        
+        image={image}
+        width={window.innerWidth}
+        height={window.innerHeight}
+        x={0}
+        y={0}
         />
 
     )

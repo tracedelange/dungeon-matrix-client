@@ -39,8 +39,8 @@ const DMConsole = ({socket}) => {
                             <Button disabled='true'>Cave</Button>
                             <Button disabled='true'>Grove</Button>
                             <div className='break'></div>
-                            <Button disabled='true'>Mountain</Button>
-                            <Button id='field' onClick={(e) => socket.generateMap({type:e.target.id})}>Field</Button>
+                            <Button id='desert' onClick={(e) => socket.generateMap({type:e.target.id})}>Desert</Button>
+                            <Button id='forest' onClick={(e) => socket.generateMap({type:e.target.id})}>Forest</Button>
                             <Button onClick={() => socket.clearMap()}>Clear</Button>
                         </div>
 

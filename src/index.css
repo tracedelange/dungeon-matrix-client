@@ -28,6 +28,7 @@ html, body {
 }
 
 .header-container {
+  background-color: white;
   width: 100vw;
   height: 10vh;
   font-size: 1vw;
@@ -225,7 +226,7 @@ html, body {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #586A6A;
-  background-image: url('./assets/background.png');
+  /* background-image: url('./assets/background.png'); */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -583,7 +584,7 @@ html, body {
 }
 
 .dm-toolbox-image {
-  width: 100px;
+  width: 10%;
   border: 1px solid white;
   padding: 1%;
 }
@@ -607,4 +608,10 @@ html, body {
   border: 1px solid red;
   border-radius: 5%;
 
+}
+
+.background-stage {
+  position: absolute;
+  top: 0%;
+  z-index: -20;
 }

@@ -6,14 +6,14 @@ import { useSelector } from 'react-redux';
 import MapCharacter from './MapCharacter';
 import TerrainLayer from './TerrainLayer';
 import MapElement from './MapElement';
-
+import BackgroundImage from './BackgroundImage'
 
 const MainStage = ({ socket }) => {
 
-    
+
     const map = useSelector(state => state.grid)
     const user = useSelector(state => state.session)
-    
+
     const [stage, setStage] = useState({
         scale: 1,
         // x: 50 * (map.configuration.width / 8),
@@ -25,7 +25,7 @@ const MainStage = ({ socket }) => {
     const handleWheel = (e) => {
         e.evt.preventDefault();
 
-        const scaleBy = 1.05;
+        const scaleBy = 1.1;
         const stage = e.target.getStage();
         const oldScale = stage.scaleX();
         const mousePointTo = {
@@ -60,11 +60,11 @@ const MainStage = ({ socket }) => {
 
 
     const handleStageClick = (e) => {
-        if (map.dmTools.active){
+        if (map.dmTools.active) {
             //spawn characte at clicked location.
             let x = Math.floor((e.target.x()) / 50)
             let y = Math.floor((e.target.y()) / 50)
-    
+
             if (x <= 0) {
                 x = 0
             }
@@ -77,9 +77,9 @@ const MainStage = ({ socket }) => {
             if (y > map.configuration.height - 1) {
                 y = map.configuration.height - 1
             }
-    
 
-            let elementObject = {avatar_index: map.dmTools.selectedItem, position_x: x, position_y: y}
+
+            let elementObject = { avatar_index: map.dmTools.selectedItem, position_x: x, position_y: y }
 
             console.log(elementObject)
 
@@ -92,35 +92,48 @@ const MainStage = ({ socket }) => {
     }
 
     return (
-        <Stage
-            onWheel={handleWheel}
-            onClick={handleStageClick}
-            onMouseOver={handleMouseOver}
-            width={window.innerWidth}
-            height={window.innerHeight - 99}
-            scaleX={stage.scale}
-            scaleY={stage.scale}
-            draggable
-            x={stage.x}
-            y={stage.y}
-        >
-            <Layer>
-                <TerrainLayer stage={stage} config={map.configuration} />
-            </Layer>
-            <Layer>
-                {mapElementArray}
-            </Layer>
-            <Layer>
-                {map.configuration.gridVisible ?
-                    <Grid config={map.configuration} />
-                    :
-                    null
-                }
-            </Layer>
-            <Layer>
-                {mapCharacterArray}
-            </Layer>
-        </Stage>
+        <>
+            <Stage
+                width={window.innerWidth}
+                height={window.innerHeight}
+                x={0}
+                y={0}
+                className='background-stage'
+            >
+                <Layer>
+                    <BackgroundImage config={map.configuration} />
+                </Layer>
+            </Stage>
+            <Stage
+                onWheel={handleWheel}
+                onClick={handleStageClick}
+                onMouseOver={handleMouseOver}
+                width={window.innerWidth}
+                height={window.innerHeight - 99}
+                scaleX={stage.scale}
+                scaleY={stage.scale}
+                draggable
+                x={stage.x}
+                y={stage.y}
+            >
+                <Layer>
+                    <TerrainLayer stage={stage} config={map.configuration} />
+                </Layer>
+                <Layer>
+                    {mapElementArray}
+                </Layer>
+                <Layer>
+                    {map.configuration.gridVisible ?
+                        <Grid config={map.configuration} />
+                        :
+                        null
+                    }
+                </Layer>
+                <Layer>
+                    {mapCharacterArray}
+                </Layer>
+            </Stage>
+        </>
     )
 }
 

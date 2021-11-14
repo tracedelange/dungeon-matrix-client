@@ -1,7 +1,9 @@
 const initialState = {
     configuration: {
-        width: 20,
-        height: 20,
+        width: null,
+        height: null,
+        background_index: 0,
+        tile_index: 0,
         scale: 50,
         gridVisible: false,
         characterDetails: true
@@ -20,6 +22,13 @@ const gridSessionReducer = (state=initialState, action) => {
         case "SET_MAP_ELEMENTS":
             return {
                 ...state,
+                configuration: {
+                    ...state.configuration,
+                    height: action.payload.height,
+                    width: action.payload.width,
+                    background_index: action.payload.background_index,
+                    tile_index: action.payload.tile_index
+                },
                 map_characters: [...action.payload.map_characters],
                 map_elements: [...action.payload.map_elements]
             }

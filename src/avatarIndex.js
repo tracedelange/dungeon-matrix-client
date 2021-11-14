@@ -1,4 +1,5 @@
-import grass from './assets/Grass 8.png'
+import grass from './assets/tiles/Grass Texture 1.jpg'
+import dirt from './assets/tiles/Grass Texture 3.jpg'
 import cleric from './assets/cleric.png'
 import hooded from './assets/hooded-orc.png'
 import orc from './assets/orc.png'
@@ -11,6 +12,10 @@ import goblin from './assets/goblin-tribal.png'
 import goblinArmored from './assets/goblin-armored.png'
 import skelly from './assets/skelly.png'
 import knight from './assets/knight.png'
+
+import cloudy from './assets/backgrounds/cloudy.png'
+import desert from './assets/backgrounds/desert.png'
+import moon from './assets/backgrounds/moon.png'
 
 import chest from './assets/chest.png'
 import pine from './assets/pine-tree.png'
@@ -38,6 +43,15 @@ export const mobs = [
     chest
 ]
 
+export const backgrounds = [
+
+    cloudy,
+    desert,
+    moon
+]
+
 export const terrain = [
+    dirt,
+    grass
 ]
 
