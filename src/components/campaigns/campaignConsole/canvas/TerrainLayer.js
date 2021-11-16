@@ -6,12 +6,10 @@ import {v4 as uuid} from 'uuid'
 
 const TerrainLayer = ({ stage, config }) => {
 
-    // console.log(stage)
-    console.log(config)
 
-    // console.log(config.tile_index)
 
     const [grassImage] = useImage(terrain[config.tile_index])
+
 
     const grassArray = []
 
@@ -26,13 +24,20 @@ const TerrainLayer = ({ stage, config }) => {
                 x={config.scale * x}
                 y={config.scale * y}
                 />)
+            }
         }
-    }
-
-
-    return (
-        <>
-        {grassArray}
+        
+        
+        return (
+            <>
+        {/* {grassArray} */}
+        <Image 
+        x={0}
+        y={0}
+        image={grassImage}
+        width={config.width * config.scale}
+        height={config.height * config.scale}
+        />
         </>
     )
 }

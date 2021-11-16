@@ -19,7 +19,6 @@ const SocketLayer = () => {
     const [socket, setSocket] = useState({})
     const [connected, setConnected] = useState(false)
 
-    // const gridConfiguration = useSelector(state => state.grid.configuration)
 
     useEffect(()=>{
 
@@ -37,10 +36,8 @@ const SocketLayer = () => {
             channel: 'ChatChannel',
             id: campaignData.id,
             user_id: userData.id,
-            // gridConfiguration: gridConfiguration
         }, {
             connected: () => {
-                console.log(`connected to channel ${campaignData.id}`)
                 chatsConnection.perform('getSessionData')
             },
             received: async (data) => {
@@ -50,7 +47,6 @@ const SocketLayer = () => {
                         dispatch({type: 'SET_MESSAGES', payload: resp.chat_messages})
                         break;
                     case "map_data":
-                        console.log(resp.map_data)
                         dispatch({type: 'SET_MAP_ELEMENTS', payload: resp.map_data})
                         break;
                     default:
@@ -78,7 +74,7 @@ const SocketLayer = () => {
                 chatsConnection.perform('updateCharacterHealth', newHealth)
             },
             disconnected: () => {
-                // chatsConnection.perform('userHasLeft')
+                chatsConnection.perform('userHasLeft')
             },
             create_message: function (chatContent) {
                 chatsConnection.perform('create', {
@@ -97,8 +93,6 @@ const SocketLayer = () => {
         }
     }, [connected])
 
-    console.log(userData)
-    console.log(campaignData)
 
     return (
         <div className='session-container'>

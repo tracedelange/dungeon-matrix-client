@@ -69,6 +69,8 @@ const NewCharacterDialog = ({ open, handleClose, handleNewCharacterSubmit }) => 
         <Dialog
             open={open}
             onClose={handleClose}
+            fullWidth
+            maxWidth="md"
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >

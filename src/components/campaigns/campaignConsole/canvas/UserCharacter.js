@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Image } from 'react-konva'
+import { Group, Image } from 'react-konva'
 import { useSelector } from 'react-redux'
 import useImage from 'use-image'
 import HoverText from './HoverText'
+import CanvasHealthbar from './CanvasHealthbar'
 
 import { avatars } from '../../../../avatarIndex'
 
-const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }) => {
+const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters, updateGridHighlight }) => {
 
 
 
@@ -80,21 +81,15 @@ const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }
 
     }
 
+
     return (
         <>
-            {hoverActive ?
-                <HoverText x={(50 * position.x)} y={50 * (position.y - 1)} content={data.character.name} />
-                :
-                config.characterDetails ?
-                <HoverText x={(50 * position.x)} y={50 * (position.y - 1)} content={data.character.name} />
-                :
-                null
-                }
-            <Image
-                image={image}
+            <Group
                 height={config.scale}
                 width={config.scale}
-                onDragStart={()=> setHoverActive(false)}
+                onDragStart={() => setHoverActive(false)}
+                onDragMove={updateGridHighlight}
+                draggable
                 onMouseEnter={e => {
                     const container = e.target.getStage().container();
                     container.style.cursor = "pointer";
@@ -105,14 +100,45 @@ const UserCharacter = ({ config, data, socket, map_character_id, mapCharacters }
                     container.style.cursor = "default";
                     setHoverActive(false)
                 }}
-
                 x={50 * position.x}
                 y={50 * position.y}
-
-                draggable
-                onDragEnd={handleDragDrop}
                 _useStrictMode
-            />
+                onDragEnd={handleDragDrop}
+            >
+                {hoverActive ?
+                    <>
+                        <HoverText
+                            x={0}
+                            y={-1 * config.scale}
+                            content={data.character.name} />
+                        <CanvasHealthbar
+
+                            health={data.character.health}
+                            maxHealth={data.character.maxHealth}
+
+                        />
+                    </>
+
+                    :
+                    config.characterDetails ?
+                        <>
+                            <HoverText
+                                x={0}
+                                y={-1 * config.scale}
+                                content={data.character.name} />
+                            <CanvasHealthbar
+                                health={data.character.health}
+                                maxHealth={data.character.maxHealth} />
+                        </>
+                        :
+                        null
+                }
+                <Image
+                    image={image}
+                    height={config.scale}
+                    width={config.scale}
+                />
+            </Group>
         </>
     )
 }

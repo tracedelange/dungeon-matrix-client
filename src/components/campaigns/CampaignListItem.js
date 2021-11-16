@@ -21,6 +21,9 @@ const CampaignListItem = ({ data }) => {
     }
 
 
+    console.log(data)
+
+
     return (
         <li className='campaign-list-item'>
 
@@ -36,7 +39,7 @@ const CampaignListItem = ({ data }) => {
             <Divider variant='middle' orientation='vertical' flexItem />
             <div className='campaign-details' >
                 <p>
-                    {data.users.length} Members, 0 / {data.users.length} Online
+                    {data.users.length} Members, {data.connected_count} / {data.users.length} Online
                 </p>
                 <p>
                     Dungeon Master:  {dm.username}

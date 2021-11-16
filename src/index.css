@@ -1,3 +1,9 @@
+@font-face {
+  font-family: BedsteadRegular;
+  src: url("./assets/font/bedstead.otf") format('opentype');
+}
+
+
 html, body {
   font-family: 'BedsteadRegular';
   /* font-weight: normal; */
@@ -576,6 +582,8 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 70%;
+  overflow-x: scroll;
   height: 100%;
 }
 

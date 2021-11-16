@@ -13,7 +13,6 @@ const CampaignSession = () => {
     useEffect(() => {
         getCampaignData(id)
             .then(data => {
-                console.log(data)
                 if (data) {
                     dispatch({ type: 'SET_MESSAGES', payload: data.chat_messages})
                     delete data.chat_messages

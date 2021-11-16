@@ -15,7 +15,6 @@ const DisplayOptions = () => {
         setOpen(!open)
     }
 
-    console.log(config)
 
     const dispatch = useDispatch()
 
